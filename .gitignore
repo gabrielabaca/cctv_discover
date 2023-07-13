@@ -1,0 +1,32 @@
+# Archivos generados por Django
+*.pyc
+__pycache__/
+*.sqlite3
+
+# Archivos generados por el IDE
+.idea/
+.vscode/
+
+# Dependencias de Python
+venv/
+env/
+*.env
+
+# Archivos estáticos generados por collectstatic
+staticfiles/
+
+# Archivos de registro
+*.log
+
+# Archivos de configuración local
+settings_local.py
+
+# Archivos de migraciones de la base de datos
+**/migrations/
+
+# Archivos de configuración de PyCharm
+.idea/
+
+# Archivos de caché y sesiones de Django
+*.cache
+*.session

@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block Main %}
+<div id="map" style="height: 93vh; width: 100%; margin-top: 7vh;"></div>
+
+{% endblock %}
+{% block Script %}
+<script type="application/javascript">
+    // Set default position 
+    const defaultPosition = { lat: -8.673, lng: -56.610 };
+
+    // Init google map
+    function initMap() {
+        // if geolocation
+
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(setPosition);
+        }
+        
+        // Set Info windows
+        var infoWindow = new google.maps.InfoWindow();
+
+        // The map, centered at defaultPosition
+        const map = new google.maps.Map(document.getElementById("map"), {
+            zoom: 4,
+            center: defaultPosition,
+        });
+        fetch('/api/get_markets').then(res => {
+                return res.json()
+            }).then(data => {
+                console.log(data)
+                i = 0;
+                data.data.map(function(element){
+                    i++
+                    // Populate Map
+                    const marker = new google.maps.Marker({
+                        position: element.location,
+                        map: map,
+                    });
+                    
+                    // Add infoWindows
+                    google.maps.event.addListener(marker, 'click', (function(marker, i) {
+                        return function() {
+                        infoWindow.setContent('<div>\
+                            <h3>'+element.info.country+', '+element.info.city +'</h3>\
+                            <p>Last Snap at: '+element.info.last_snapt_at+'</p>\
+                            <a href="api/get_snap/'+element.info.uuid+'" target="_blank" class="btn btn-succes">Show Snap</a>\
+                            </div>');
+                        infoWindow.open(map, marker);
+                        }
+                    })(marker, i));
+                })
+            });
+        
+    }
+
+    function setPosition(position) {
+        defaultPosition = { lat: position.coords.latitude, lng: position.coords.longitude };
+    }
+
+    window.initMap = initMap;
+</script>
+<script
+    src="https://maps.googleapis.com/maps/api/js?key={YOUR-GOOGLE-API-KEY}=initMap&v=weekly"
+    defer
+></script>
+{% endblock %}

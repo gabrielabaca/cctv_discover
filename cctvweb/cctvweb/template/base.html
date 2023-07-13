@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        {% load static %}
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>CCTV Discover</title>
+        <link href="{% static '/assets/css/style.css' %}" rel="stylesheet">
+
+        <!-- Bootstrap -->
+        <!-- https://getbootstrap.com/docs/5.2 -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+
+        <!-- FontAwesome -->
+        <!-- https://fontawesome.com/v6/search?m=free -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+    </head>
+    <body>
+        <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+            <div class="container-fluid">
+              <a href="/" class="navbar-brand" data-bs-toggle="tooltip" title=" Volver al dashboard">CCTV DISCOVER</a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="d-flex justify-content-end navbar-collapse" id="navbarNavAltMarkup">
+                <ul class="navbar-nav navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+                    <!--
+                      ### Work on this....
+
+                      <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="notifications" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          <i class="fa fa-bell"></i>
+                        </a>
+                        
+                        <ul class="dropdown-menu" data-bs-popper="left=-150px" aria-labelledby="notifications">
+                          
+                        </ul>
+                      </li>
+                    
+                    <li class="nav-item">
+                      <a class="nav-link" href="/map" data-bs-toggle="tooltip" title="Go dashboard"><i class="fa fa-house-user"></i></a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="/about" data-bs-toggle="tooltip" title="About us..."><i class="fa fa-question-circle"></i></a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="/logout" data-bs-toggle="tooltip" title="Exit"><i class="fa fa-right-from-bracket"></i> Exit</a>
+                    </li>
+                    -->
+                  </ul>
+              </div>
+            </div>
+          </nav>
+        <main class="m-dash">
+            {% block Main %}
+            {% endblock %}
+        </main>
+    </body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/js/all.min.js" integrity="sha512-6PM0qYu5KExuNcKt5bURAoT6KCThUmHRewN3zUFNaoI6Di7XJPTMoT6K0nsagZKk2OB4L7E3q1uQKHNHd4stIQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/js/conflict-detection.min.js" integrity="sha512-uf3F0AGh2mKjvRADOUBQMavmoKTm92Ud1tsRu4PZqltqjbP+ZYj+5i3ph6EE7Oto4hkpFPr6DEVlbw47i5SlAg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    {% block Script %}
+    {% endblock %}
+    </html>
